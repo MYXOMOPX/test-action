@@ -1,0 +1,36 @@
+{
+  "name": "@taw/core",
+  "version": "1.0.2",
+  "description": "A triple-agent game core",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {},
+  "scripts": {
+    "build-simulation-watch": "npm run clean && tsc --project tsconfig.simulation.json -w",
+    "build": "tsc --project tsconfig.build.json",
+    "build-clean": "npm run clean && npm run build",
+    "test": "jest",
+    "clean": "rimraf dist",
+    "prepublish": "npm run build-clean",
+    "publish-private": "npm publish --registry http://npm.myxomopx.ru"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build-clean && git add dist"
+    }
+  },
+  "authors": [
+    "MYXOMOPX",
+    "DPOH-VAR"
+  ],
+  "license": "ISC",
+  
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "husky": "^4.2.5",
+    "jest": "^25.1.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
+  }
+}
