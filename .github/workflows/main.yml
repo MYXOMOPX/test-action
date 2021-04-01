@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: MYXOMOPX/modify-pkg-json@0.0.1
+      - uses: MYXOMOPX/modify-pkg-json@master
         with: 
           target: package.json
           action: "update_version"
