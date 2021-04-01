@@ -11,6 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2 
+      
+      - uses: pCYSl5EDgo/cat@master
+        id: logA
+        with:
+          path: ./package.json
+
+      - run: echo $TEXT
+        env:
+          TEXT: ${{ steps.logA.outputs.text }}
     
       - uses: MYXOMOPX/modify-pkg-json@master
         with: 
@@ -18,11 +27,11 @@ jobs:
           action: "update_version"
           argument: "1.6.6"
           
-      - name: Read package.json
-        id: rpkg
-        uses: juliangruber/read-file-action@v1
+      - uses: pCYSl5EDgo/cat@master
+        id: logB
         with:
           path: ./package.json
-          
-      - name: Echo package.json
-        run: echo ${{ steps.rpkg.outputs.content }}
+
+      - run: echo $TEXT
+        env:
+          TEXT: ${{ steps.logB.outputs.text }}
