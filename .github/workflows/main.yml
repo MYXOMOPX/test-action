@@ -24,8 +24,20 @@ jobs:
       - uses: MYXOMOPX/modify-pkg-json@master
         with: 
           target: ./package.json
-          action: "update_version"
+          action: "set_version"
           argument: "1.6.6"
+          
+      - uses: MYXOMOPX/modify-pkg-json@master
+        with: 
+          target: ./package.json
+          action: "set_dep_version"
+          argument: "react 1.2.3"
+          
+      - uses: MYXOMOPX/modify-pkg-json@master
+        with: 
+          target: ./package.json
+          action: "set_devdep_version"
+          argument: "jest 100.200.300"
           
       - uses: pCYSl5EDgo/cat@master
         id: logB
