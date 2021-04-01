@@ -1,0 +1,20 @@
+name: TEST
+
+on:
+  push:
+    branches: [ master ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: MYXOMOPX/modify-pkg-json@latest
+        with: 
+          target: package.json
+          action: "update_version"
+          arguments: "1.6.0"
+          
+      - name: Run a one-line script
+        run: echo Hello, world!
