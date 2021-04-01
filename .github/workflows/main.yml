@@ -12,9 +12,15 @@ jobs:
     steps:
       - uses: MYXOMOPX/modify-pkg-json@master
         with: 
-          target: package.json
+          target: ./package.json
           action: "update_version"
-          arguments: "1.6.0"
+          argument: "1.6.6"
           
-      - name: Run a one-line script
-        run: cat package.json
+      - name: Read package.json
+        id: rpkg
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./package.json
+          
+      - name: Echo package.json
+        run: echo ${{ steps.rpkg.outputs.content }}
